@@ -1,0 +1,551 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+min-height: 100vh;
+    margin: 0;
+    color: #20242a;
+    background: #fdf7ed;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+header {
+    height: 76px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fffaf3;
+}
+
+.marca {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.marca span {
+    color: #c55232;
+}
+
+main {
+    padding: 56px 18px;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 36px;
+    background: white;
+    border-radius: 8px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.subtitulo {
+    margin: 0 0 24px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+label {
+    display: block;
+    margin: 18px 0 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    height: 46px;
+    padding: 0 12px;
+    border: 1px solid #ddd5cc;
+    border-radius: 5px;
+    background: white;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #c55232;
+}
+
+.botoes {
+    margin-top: 28px;
+    display: flex;
+    gap: 12px;
+}
+
+.botao {
+    min-height: 44px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cancelar {
+    background: #f4eee7;
+}
+
+.salvar {
+    color: white;
+    background: #c55232;
+}
+
+.salvar:hover {
+    background: #a94127;
+}
+
+.mensagens {
+    margin-bottom: 18px;
+}
+
+.mensagem {
+    margin: 0;
+    padding: 12px;
+    border-radius: 5px;
+    background: #f8e6dc;
+}
+.mensagem.erro {
+    color: white;
+    font-weight: bold;
+    background-color: red;
+    opacity:0.6;
+}
+
+/* Logo e nome no cabeçalho. */
+.pagina-adicionar-produto header {
+    height: 68px;
+    padding: 0 20px;
+    background: #fffaf3;
+}
+
+.pagina-adicionar-produto .logo-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagina-adicionar-produto .logo-header img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.pagina-adicionar-produto .texto-logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagina-adicionar-produto .marca {
+    font-family: Inter, Arial, sans-serif;
+    font-size: 18px;
+    line-height: normal;
+}
+
+.pagina-adicionar-produto .submarca {
+    margin-top: 2px;
+    color: #1A1F24;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 8px;
+}
+
+.pagina-adicionar-produto .voltar {
+    color: #1A1F24;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Barra lateral da página de adicionar produto, conforme o Figma desktop. */
+.pagina-adicionar-produto main {
+    display: flex;
+    padding: 0;
+    min-height: 915px;
+}
+
+.pagina-adicionar-produto .barra-botoes {
+    width: 220px;
+    min-width: 220px;
+    padding: 12px 10px;
+    background: #fffaf3;
+}
+
+.pagina-adicionar-produto .barra-botoes > a {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    margin: 0 8px;
+    gap: 16px;
+    color: #1A1F24;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.pagina-adicionar-produto .barra-botoes > a:hover,
+.pagina-adicionar-produto .barra-botoes > a:focus-visible {
+    color: #A94127;
+    background-color: #F8E6DC;
+}
+
+.pagina-adicionar-produto .barra-botoes > .selecionado {
+    color: #A94127;
+    background-color: #F8E6DC;
+}
+
+.pagina-adicionar-produto .barra-botoes > a img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.pagina-adicionar-produto .frase-lateral {
+    margin: 56px 10px 0;
+    padding: 12px;
+    border-radius: 12px;
+    background: #eddfd0;
+}
+
+.pagina-adicionar-produto .frase-lateral img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.pagina-adicionar-produto .frase-lateral p {
+    margin: 6px 0 0;
+    color: #d09475;
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.pagina-adicionar-produto .desenho-lateral {
+    width: 155px;
+    margin: 52px 15px 0;
+    object-fit: contain;
+}
+
+.pagina-adicionar-produto .conteudo-pagina {
+    flex: 1;
+    min-width: 0;
+    padding: 56px 18px;
+}
+
+.pagina-adicionar-insumo-produto .conteudo-pagina {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título e campos de resumo da página de insumos do produto. */
+.pagina-adicionar-insumo-produto .titulo-pagina {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 596px;
+    min-height: 78px;
+    margin: 0 auto 25px;
+}
+
+.pagina-adicionar-insumo-produto {
+    font-family: Inter, Arial, sans-serif;
+}
+
+.pagina-adicionar-insumo-produto .titulo-pagina img {
+    width: 84px;
+    height: 78px;
+    object-fit: contain;
+}
+
+.pagina-adicionar-insumo-produto .titulo-pagina h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.pagina-adicionar-insumo-produto .titulo-pagina p {
+    margin: 0;
+    color: #1A1F24;
+    font-size: 15px;
+}
+
+.pagina-adicionar-insumo-produto .formulario {
+    max-width: 669px;
+    padding: 28px 52px;
+    border: 1px solid #F0E7E7;
+    border-radius: 28px;
+}
+
+.pagina-adicionar-insumo-produto .formulario h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.pagina-adicionar-insumo-produto .subtitulo {
+    margin-bottom: 18px;
+}
+
+.pagina-adicionar-insumo-produto .campo-resumo {
+    min-width: 0;
+}
+
+.pagina-adicionar-insumo-produto .campo-resumo label {
+    margin: 18px 0 8px;
+    font-size: 13px;
+}
+
+.pagina-adicionar-insumo-produto .valor-resumo {
+    min-height: 61px;
+    margin: 0;
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #F0E7E7;
+    border-radius: 10px;
+    background: #FFFFFF;
+    font-size: 14px;
+}
+
+.pagina-adicionar-insumo-produto .linha-resumo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.pagina-adicionar-insumo-produto .campo-insumos .mais {
+    width: 58px;
+    height: 60px;
+    margin: 0 0 0 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #C55232;
+    border-radius: 50%;
+    color: #C55232;
+    background: #FFFFFF;
+    font-size: 40px;
+    line-height: 1;
+}
+
+.pagina-adicionar-insumo-produto .botoes {
+    gap: 20px;
+}
+
+.pagina-adicionar-insumo-produto .botao {
+    width: 50%;
+    min-height: 63px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.pagina-adicionar-insumo-produto .cancelar,
+.pagina-adicionar-insumo-produto .salvar {
+    color: #FFFFFF;
+    background: #C55232;
+}
+
+.pagina-adicionar-insumo-produto .cancelar:hover,
+.pagina-adicionar-insumo-produto .salvar:hover {
+    background: #A94127;
+}
+
+input[type="file"] {
+    height: auto;
+    padding: 8px;
+    border: 1px solid #eee0d5;
+    border-radius: 8px;
+    background: #fffaf3;
+    font-size: 13px;
+}
+
+input[type="file"]::file-selector-button {
+    padding: 9px 14px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background: #c55232;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: #a94127;
+}
+.produto{
+    display: none;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .pagina-adicionar-produto .barra-botoes {
+        width: 165px;
+        min-width: 165px;
+        padding: 10px 6px;
+    }
+
+    .pagina-adicionar-produto .barra-botoes > a {
+        margin: 0 4px;
+        gap: 10px;
+        font-size: 13px;
+    }
+
+    .pagina-adicionar-produto .barra-botoes > a img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .pagina-adicionar-produto .frase-lateral {
+        width: 140px;
+        margin: 48px 4px 0;
+    }
+
+    .pagina-adicionar-produto .desenho-lateral {
+        width: 125px;
+        margin: 40px 8px 0;
+    }
+
+    .pagina-adicionar-produto .conteudo-pagina {
+        padding: 36px 16px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .pagina-adicionar-produto .conteudo-pagina,
+    .pagina-adicionar-insumo-produto .conteudo-pagina {
+        min-width: 0;
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .pagina-adicionar-produto .formulario,
+    .pagina-adicionar-insumo-produto .formulario { max-width: 100%; }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+    .pagina-adicionar-produto .barra-botoes,
+    .pagina-adicionar-insumo-produto .barra-botoes { width: 170px; min-width: 170px; }
+
+    .pagina-adicionar-produto .conteudo-pagina,
+    .pagina-adicionar-insumo-produto .conteudo-pagina { padding: 24px 16px; }
+
+    .pagina-adicionar-produto .formulario,
+    .pagina-adicionar-insumo-produto .formulario {
+        width: min(100%, 560px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-adicionar-produto header {
+        height: 64px;
+        min-height: 64px;
+        padding: 0 12px;
+    }
+
+    .pagina-adicionar-produto .logo-header img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .pagina-adicionar-produto .marca {
+        font-size: 16px;
+    }
+
+    .pagina-adicionar-produto .submarca {
+        margin-top: 2px;
+        font-size: 7px;
+    }
+
+    .pagina-adicionar-produto .voltar {
+        font-size: 12px;
+    }
+
+    main {
+        padding: 28px 14px;
+    }
+
+    .formulario {
+        padding: 24px 18px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .pagina-adicionar-produto .barra-botoes {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 0;
+        padding: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .pagina-adicionar-produto .barra-botoes > a {
+        width: calc(50% - 4px);
+        height: 42px;
+        margin: 0;
+        padding: 0 8px;
+        gap: 10px;
+        font-size: 13px;
+    }
+
+    .pagina-adicionar-produto .barra-botoes > a img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .pagina-adicionar-produto main {
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .pagina-adicionar-produto .conteudo-pagina,
+    .pagina-adicionar-insumo-produto .conteudo-pagina {
+        padding: 28px 14px;
+    }
+
+    .pagina-adicionar-produto .desenho-lateral,
+    .pagina-adicionar-produto .frase-lateral {
+        display: none;
+    }
+
+    .pagina-adicionar-insumo-produto .titulo-pagina {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .pagina-adicionar-insumo-produto .titulo-pagina h1 {
+        font-size: 24px;
+    }
+
+    .pagina-adicionar-insumo-produto .formulario {
+        padding: 24px 18px;
+    }
+
+    .pagina-adicionar-insumo-produto .linha-resumo {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+}

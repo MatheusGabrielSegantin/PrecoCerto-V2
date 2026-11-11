@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - PreçoCerto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-header">
+            <img src="{{ url_for('static', filename='img/icone_logo.png') }}">
+            <div>
+                <h1>Preço<span>Certo</span></h1>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+        </div>
+
+        <a href="{{ url_for('home')}}" class="voltar">Voltar</a>
+    </header>
+
+
+    <main>
+
+        <div class="barra-botoes">
+
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/icone_casa.png') }}" alt="início"> Início</a>
+            <a href="{{ url_for('pagina_insumos') }}"><img src="{{ url_for('static', filename='img/icone_caixa.png') }}" alt="insumos"> Insumos</a>
+            <a href="{{ url_for('pagina_produtos') }}"><img src="{{ url_for('static', filename='img/icone_tocapng.png') }}" alt="produtos"> Produtos</a>
+            <a href="{{ url_for('perfil') }}"><img src="{{ url_for('static', filename='img/icone_engrenagem.png') }}" alt="configurações"> Configurações</a>
+
+            <div class="frase-lateral">
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" class="folhinha">
+                <p>Boas escolhas hoje,melhores resultados amanhã!</p>
+            </div>
+
+            <img src="{{ url_for('static', filename='img/toca.png') }}">
+
+        </div>
+
+        <section>
+
+            <h2>Meu Perfil</h2>
+            <p class="subtitulo">Confira e Gerencie suas informações</p>
+
+              {% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="flash-messages">
+{% for category, message in messages %}
+<div class="flash {{ category }}">{{ message }}</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+         {% if usuario%}
+            <form action="">
+                <div class="topo">
+                        <img src="{{ url_for('static', filename=imagem) }}" class="avatar">
+
+                    <div class="campos">
+
+
+                        <label for="nome">Nome completo</label>
+                        <p>{{ nome }}</p>
+
+                        <label for="email">E-mail</label>
+                        <p>{{ email }}</p>
+
+                        <label for="mao_obra">Mão de Obra</label>
+                        <p>{{ mao_obra }}</p>
+                    </div>
+                </div>
+
+            </form>
+         {% endif%}
+            <a href="{{ url_for('editar_perfil', id=usuario[0])}}" class="editar_perfil">Editar Perfil</a> <!--pega o id do usuário para identificar qual perfil será editado.-->
+
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo-footer">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}">
+            <div>
+                <h2>Preço<span>Certo</span></h2>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+            <span class="frase">Precificação afetiva para negócios reais.</span>
+        </div>
+
+        <span>© 2026 PreçoCerto</span>
+    </footer>
+
+</body>
+</html>

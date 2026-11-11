@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisar Insumo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pesquisa_insumo.css') }}">
+</head>
+
+<body>
+    <!-- HEADER / CABEÇALHO -->
+    <header>
+        <img src="{{ url_for('static', filename='img/icone_logo.png') }}">
+        <h1>Preço<span>Certo</span></h1>
+        <p>PRECIFICAÇÃO AFETIVA</p>
+
+        <nav>
+            <a href="{{ url_for('home') }}">Voltar</a>
+        </nav>
+    </header>
+
+    <!-- BARRA LATERAL - MENU -->
+    <main>
+        <div class="barra-botoes">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/icone_casa.png') }}" alt="início">Início</a>
+            <a href="{{ url_for('pagina_insumos') }}"><img src="{{ url_for('static', filename='img/icone_caixa.png') }}" alt="insumos">Insumos</a>
+            <a href="{{ url_for('pagina_produtos') }}"><img src="{{ url_for('static', filename='img/icone_tocapng.png') }}" alt="produtos">Produtos</a>
+            <a href="{{ url_for('perfil') }}"><img src="{{ url_for('static', filename='img/icone_engrenagem.png') }}" alt="configurações">Configurações</a>
+
+            <div>
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" class="folhinha">
+                <p>Boas escolhas hoje, melhores resultados amanhã!</p>
+            </div>
+
+            <img src="{{ url_for('static', filename='img/toca.png') }}">
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="conteudo">
+
+            <div class="parte-TituloePesquisa">
+
+                <div class="titulo">
+                    <img src="{{ url_for('static', filename='img/icone_logo.png') }}" alt="logo">
+
+                    <div>
+                        <h1>Insumos</h1>
+                        <p>Pesquise os insumos que deseja utilizar nesta receita</p>
+                    </div>
+                </div>
+
+                <form action="{{ url_for('pesquisa_insumos') }}" method="POST">
+                    <input
+                        type="text"
+                        name="nome"
+                        class="barra-pesquisa"
+                        placeholder="Pesquisar insumo"
+                    >
+                </form>
+
+
+
+            </div>
+             {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="flash-messages">
+                        {% for message in messages %}
+                        <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+
+            <!-- TABELA -->
+            <section>
+                {% if insumos %}
+                <table class="tabela-pesquisa-insumo">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Unidade</th>
+                            <th class="quantidade">Quantidade</th>
+                            <th class="acao">Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for insumo in insumos %}
+                        <tr>
+                            <td class="celula-nome">{{ insumo[1] }}</td>
+                            <td class="celula-unidade">{{ insumo[2] }}</td>
+
+                            <td class="celula-quantidade">
+                                <form class="form-insumo" action="{{ url_for('inserir_insumos_produto', id=insumo[0]) }}" method="POST">
+
+                                    <input type="number" name="quantidade" min="0.001" step="any" required>
+
+                                    <select name="unidade_uso">
+                                        <option value="1">Quilograma</option>
+                                        <option value="2">Grama</option>
+                                        <option value="3">Litro</option>
+                                        <option value="4">Mililitros</option>
+                                        <option value="5">Unidade</option>
+                                    </select>
+
+                                    <button type="submit" class="botao">Inserir</button>
+
+                                </form>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+                {% else %}
+                <p>Você ainda não tem insumos cadastrados.</p>
+                {% endif %}
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER / RODAPÉ -->
+    <footer>
+        <div class="logo-footer">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}">
+
+            <div>
+                <h2>Preço<span>Certo</span></h2>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+
+            <span class="frase">Precificação afetiva para negócios reais.</span>
+        </div>
+
+        <span>© 2026 PreçoCerto</span>
+    </footer>
+
+</body>
+</html>

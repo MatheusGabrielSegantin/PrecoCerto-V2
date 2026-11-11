@@ -1,0 +1,122 @@
+﻿
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Insumo - PreçoCerto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adicionar_insumo.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-header">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" class="logo">
+            <div>
+                <h2>Preço<span>Certo</span></h2>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="voltar">Voltar</a>
+    </header>
+
+    <main>
+
+        <div class="barra-botoes">
+
+            <a href="{{ url_for('home') }}"><img class="icones" src="{{ url_for('static', filename='img/icone_casa.png') }}" alt="inicio">Início</a>
+            <a href="{{ url_for('pagina_insumos') }}"><img class="icones" src="{{ url_for('static', filename='img/icone_caixa.png') }}" alt="insumos">Insumos</a>
+            <a href="{{ url_for('pagina_produtos') }}"><img class="icones" src="{{ url_for('static', filename='img/icone_tocapng.png') }}" alt="produtos">Produtos</a>
+            <a href="{{ url_for('perfil') }}"><img class="icones" src="{{ url_for('static', filename='img/icone_engrenagem.png') }}" alt="configurações">Configurações</a>
+
+            <div class="frase-lateral">
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" alt="folhinha" class="folhinha">
+                <p>Boas escolhas hoje, melhores resultados amanhã!</p>
+            </div>
+
+            <img src="{{ url_for('static', filename='img/toca.png') }}" alt="decoracao" class="desenho-lateral">
+
+        </div>
+
+        <div class="conteudo">
+
+            <div class="titulo-pagina">
+                <img src="{{ url_for('static', filename='img/chapeu.png') }}" class="logo-card">
+
+                <div>
+                    <h1>Adicionar insumo</h1>
+                    <p>Cadastre os materiais utilizados nas suas receitas</p>
+                </div>
+            </div>
+
+            <section>
+
+                <h2>Novo insumo</h2>
+                <p class="subtitulo">Informe os dados abaixo para calcular o custo corretamente.</p>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for category, message in messages %}
+                                <div class="flash {{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form action="{{ url_for('cadastrar_insumo') }}" method="POST">
+
+                    <label for="nome">Nome do insumo <span>*</span></label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex.: Farinha de trigo" required>
+
+                    <label for="unidade">Unidade <span>*</span></label>
+                    <select name="unidade" id="unidade" required>
+                        <option value="" disabled selected>Selecione um campo</option>
+                        <option value=1>Quilograma</option>
+                        <option value=2>Grama</option>
+                        <option value=3>Litros</option>
+                        <option value=4>Mililitros</option>
+                        <option value=5>Unidade</option>
+                    </select>
+
+                    <label for="custo_unitario">Custo unitário <span>*</span></label>
+                    <input type="text" id="custo_unitario" name="custo_unitario" placeholder="R$ 0,00" step="0.01" required >
+
+                    <label for="estoque">Estoque <span>*</span></label>
+                    <input type="number" id="estoque" name="estoque" placeholder="Ex.: 2" step="0.01"  required>
+
+                    <div class="botoes">
+                        <a href="{{ url_for('home') }}" class="botao">Cancelar</a>
+                        <button type="submit" class="botao">Salvar insumo</button>
+                    </div>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        <div class="logo-footer">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" class="logo">
+
+            <div>
+                <h2>Preço<span>Certo</span></h2>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+        </div>
+
+        <p class="frase">Precificação afetiva para negócios reais.</p>
+
+        <p class="copyright">© 2026 PreçoCerto</p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adicionar insumos ao produto | PreçoCerto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adicionar_produto.css') }}">
+</head>
+<body class="pagina-adicionar-produto pagina-adicionar-insumo-produto">
+    <header>
+        <a class="logo-header" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" alt="Logo PreçoCerto">
+            <span class="texto-logo">
+                <span class="marca">Preço<span>Certo</span></span>
+                <span class="submarca">PRECIFICAÇÃO AFETIVA</span>
+            </span>
+        </a>
+        <a class="voltar" href="{{ url_for('pagina_produtos') }}">Voltar</a>
+    </header>
+
+    <main>
+        <aside class="barra-botoes" aria-label="Menu lateral">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/icone_casa.png') }}" alt="">
+                Início
+            </a>
+            <a href="{{ url_for('pagina_insumos') }}">
+                <img src="{{ url_for('static', filename='img/icone_caixa.png') }}" alt="">
+                Insumos
+            </a>
+            <a class="selecionado" href="{{ url_for('pagina_produtos') }}">
+                <img src="{{ url_for('static', filename='img/icone_tocapng.png') }}" alt="">
+                Produtos
+            </a>
+            <a href="{{ url_for('perfil') }}">
+                <img src="{{ url_for('static', filename='img/icone_engrenagem.png') }}" alt="">
+                Configurações
+            </a>
+
+            <div class="frase-lateral">
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" alt="">
+                <p>Boas escolhas<br>hoje, melhores<br>resultados amanhã!</p>
+            </div>
+
+            <img class="desenho-lateral" src="{{ url_for('static', filename='img/toca.png') }}" alt="">
+        </aside>
+
+        <div class="conteudo-pagina">
+            <div class="titulo-pagina">
+                <img src="{{ url_for('static', filename='img/chapeu.png') }}" alt="">
+                <div>
+                    <h1>Adicionar Produtos</h1>
+                    <p>Cadastre suas receitas e suas informações</p>
+                </div>
+            </div>
+
+            <section class="formulario">
+                <h2>Novo produto</h2>
+                <p class="subtitulo">Informe os dados abaixo para calcular o custo corretamente.</p>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="mensagens">
+                            {% for category, message in messages %}
+                                <p class="mensagem {{ category }}">{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <div class="campo-resumo">
+                    <label>Nome do produto *</label>
+                    <p class="valor-resumo">{{ produtos[0] }}</p>
+                </div>
+
+                <div class="linha-resumo">
+                    <div class="campo-resumo campo-insumos">
+                        <label>Insumos usados *</label>
+                        <a href="{{ url_for('pesquisa_insumos') }}" class="mais">+</a>
+                    </div>
+
+                    <div class="campo-resumo">
+                        <label>Margem de Lucro *</label>
+                        <p class="valor-resumo">{{ produtos[1] }}%</p>
+                    </div>
+                </div>
+
+                <div class="linha-resumo">
+                    <div class="campo-resumo">
+                        <label>Custo Total</label>
+                        <p class="valor-resumo">R$ {{ produtos[5] }}</p>
+                    </div>
+
+                    <div class="campo-resumo">
+                        <label>Sugestão de preço de venda</label>
+                        <p class="valor-resumo">R$ {{ produtos[3] }}</p>
+                    </div>
+                </div>
+
+                <div class="campo-resumo">
+                    <label>Preço de Venda *</label>
+                    <p class="valor-resumo">R$ {{ produtos[2] }}</p>
+                </div>
+
+                <div class="campo-resumo">
+                    <label>Lucro por unidade</label>
+                    <p class="valor-resumo"> {{ produtos[4] }}%</p>
+                </div>
+
+                <div class="botoes">
+                    <a href="{{ url_for('home') }}" class="botao cancelar">Cancelar</a>
+                    <a href="{{ url_for('pagina_produtos') }}" class="botao salvar">Concluir</a>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

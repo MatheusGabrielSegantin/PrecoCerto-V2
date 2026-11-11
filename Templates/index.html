@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreçoCerto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='img/icone_logo.png') }}" class="logo">
+
+        <div class="nome-marca">
+            <h4 class="marca">Preço<span class="certo">Certo</span></h4>
+            <p class="descricao">PRECIFICAÇÃO AFETIVA</p>
+        </div>
+
+        <nav class="menu">
+            <a href="#inicio">Início</a>
+            <a href="#como-funciona">Como funciona</a>
+            <a href="#beneficios">Benefícios</a>
+        </nav>
+
+        <nav class="btns-login">
+            <a href="{{ url_for('login_usu')}}" class="btn-entrar">Entrar</a>
+            <a href="{{ url_for('cadastro_usu')}}" class="btn-criar-conta">Criar conta</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+        <div class="inicio" id="inicio">
+
+            <div class="container">
+                <p class="simples">PRECIFICAÇÃO SIMPLES</p>
+                <h1>Calcule o preço certo sem </h1>
+
+                <p class="complemento-h1">complicação.</p>
+                <p>Organize seus insumos, descubra o custo das suas receitas</p>
+                <p>e tenha mais segurança para definir o preço de venda.</p>
+                <a href="{{ url_for('cadastro_usu') }}" class="btn-comecar">Começar agora</a>
+                <p class="feito">
+                    Feito para pequenos negócios e quem vende com carinho.
+                </p>
+            </div>
+
+            <div class="resumo-receita">
+                <p class="titulo-resumo">Resumo da receita</p>
+                <h2>Bolo de chocolate</h2>
+                <p class="custo">CUSTO</p>
+                <h3>R$24,80</h3>
+                <hr>
+
+                <div class="exemplo">
+                    <p>Insumos</p>
+
+                    <p>Farinha<span class="valor">R$4,50</span></p>
+
+                    <p>Chocolate<span class="valor">R$8,90</span></p>
+
+                    <p>Outros<span class="valor">R$11,40</span></p>
+                </div>
+
+                <p class="preco"><strong>Preço sugerido<span class="valor-sugerido">R$49,90</span></strong></p>
+            </div>
+
+        </div>
+
+
+        <section class="como-funciona" id="como-funciona">
+
+            <h2>Tudo o que você precisa para precificar melhor</h2>
+
+            <p class="subtitulo-como-funciona">Uma experiência simples para organizar seus custos e tomar decisões com mais clareza.</p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <p class="numero">01</p>
+                    <h3>Cadastre seus insumos</h3>
+
+                    <p>Informe nome, unidade e custo
+                    unitário de cada material utilizado.</p>
+                </div>
+
+
+                <div class="card">
+                    <p class="numero">02</p>
+                    <h3>Monte suas receitas</h3>
+
+                    <p>Relacione os insumos e veja
+                    automaticamente quanto cada
+                    receita custa.</p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <p class="numero">03</p>
+                    <h3>Defina seu preço</h3>
+
+                    <p>Compare custos e margem para
+                        chegar a um preço de venda mais
+                        seguro.</p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <p class="numero">04</p>
+                    <h3>Tenha controle</h3>
+
+                    <p>Organize suas informações e
+                        acompanhe o negócio de forma
+                        simples.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="beneficios" id="beneficios">
+
+            <p class="titulo-beneficios">DIFERENCIAIS</p>
+
+            <h2>Tudo o que você precisa para precificar com segurança</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <img src="{{ url_for('static', filename='img/grafico.png') }}" class="grafico">
+                    <div>
+                        <h3>Margem Real & Automática</h3>
+
+                        <p>Saiba na hora o lucro liquido
+                        exato em reais e porcentagem.</p>
+                    </div>
+                </div>
+
+
+                <div class="card">
+
+                    <img src="{{ url_for('static', filename='img/lixeira.png') }}" class="lixeira">
+
+                    <div>
+                        <h3>Fator de Perdas & Sobras</h3>
+
+                        <p>Aproveite melhor seus
+                        ingredientes e evite prejuízos.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <img src="{{ url_for('static', filename='img/computador.png') }}" class="computador">
+
+                    <div>
+                        <h3>Celular ou Computador</h3>
+
+                        <p>Cadastre preços no mercado
+                        e acesse suas fichas em qualquer
+                        lugar.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <img src="{{ url_for('static', filename='img/atendente.png') }}" class="atendente">
+                    <div>
+                        <h3>Suporte Humanizado</h3>
+
+                        <p>Atendimento atencioso via
+                        Whatsapp sempre que tiver
+                        dúvidas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final">
+            <h2>Pronto para descobrir o preço certo?</h2>
+            <p class="subtitulo-final">Comece gratuitamente e organize a precificação do seu negócio.</p>
+            <a href="{{ url_for('cadastro_usu') }}" class="btn-final">Criar minha conta</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo-footer">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" class="logo">
+            <div>
+                <h2>Preço<span>Certo</span></h2>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+            <span class="frase">Precificação afetiva para negócios reais.</span>
+        </div>
+
+        <span>© 2026 PreçoCerto</span>
+    </footer>
+</body>
+</html>

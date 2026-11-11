@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adicionar produto | PreçoCerto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adicionar_produto.css') }}">
+</head>
+<body class="pagina-adicionar-produto">
+    <header>
+        <a class="logo-header" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" alt="Logo PreçoCerto">
+            <span class="texto-logo">
+                <span class="marca">Preço<span>Certo</span></span>
+                <span class="submarca">PRECIFICAÇÃO AFETIVA</span>
+            </span>
+        </a>
+        <a class="voltar" href="{{ url_for('pagina_produtos') }}">Voltar</a>
+    </header>
+
+    <main>
+        <aside class="barra-botoes" aria-label="Menu lateral">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/icone_casa.png') }}" alt="">
+                Início
+            </a>
+            <a href="{{ url_for('pagina_insumos') }}">
+                <img src="{{ url_for('static', filename='img/icone_caixa.png') }}" alt="">
+                Insumos
+            </a>
+            <a class="selecionado" href="{{ url_for('pagina_produtos') }}">
+                <img src="{{ url_for('static', filename='img/icone_tocapng.png') }}" alt="">
+                Produtos
+            </a>
+            <a href="{{ url_for('perfil') }}">
+                <img src="{{ url_for('static', filename='img/icone_engrenagem.png') }}" alt="">
+                Configurações
+            </a>
+
+            <div class="frase-lateral">
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" alt="">
+                <p>Boas escolhas<br>hoje,melhores<br>resultados amanhã!</p>
+            </div>
+
+            <img class="desenho-lateral" src="{{ url_for('static', filename='img/toca.png') }}" alt="">
+        </aside>
+
+        <div class="conteudo-pagina">
+        <section class="formulario">
+            <h1>Adicionar produto</h1>
+            <p class="subtitulo">Informe os dados do produto para começar a montar sua receita.</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="mensagens">
+                        {% for category, message in messages %}
+                            <p class="mensagem {{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('cadastrar_produto') }}" method="POST" enctype="multipart/form-data">
+
+                <img src="{{ url_for('static', filename=imagem) }}" class="produto">
+                <input type="file" name="foto_produto" accept=".jpg">
+
+                <label for="nome">Nome do produto</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex.: Bolo de cenoura" required>
+
+                <label for="lucro">Margem de lucro (%)</label>
+                <input type="number" id="lucro" name="lucro" min="0" step="0.01" placeholder="Ex.: 40" required>
+
+                <label for="preco">Preço de venda (R$)</label>
+                <input type="number" id="preco" name="preco" min="0" step="0.01" placeholder="Ex.: 35.00" required>
+
+                <div class="botoes">
+                    <a class="botao cancelar" href="{{ url_for('home') }}">Cancelar</a>
+                    <button class="botao salvar" type="submit">Salvar produto</button>
+                </div>
+            </form>
+        </section>
+        </div>
+    </main>
+</body>
+</html>

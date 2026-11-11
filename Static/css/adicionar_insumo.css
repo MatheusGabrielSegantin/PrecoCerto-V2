@@ -1,0 +1,602 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --cor-principal: #C55232;
+    --cor-texto: #1A1F24;
+    --cor-fundo: #FDF7ED;
+    --cor-fundo-header: #FEFAF3;
+}
+
+body {
+background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+span {
+    color: var(--cor-principal);
+}
+
+/* HEADER */
+
+header {
+    height: 63px;
+    padding: 0 50px 0 12px;
+    background-color: #FFFAF3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-header img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-header h2 {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.logo-header p {
+    font-size: 7px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.voltar {
+    color: black;
+    font-size: 11px;
+}
+
+/* MAIN */
+
+main {
+    display: flex;
+    width: 100%;
+    flex: 1;
+}
+
+/* BARRA LATERAL */
+
+.barra-botoes {
+    width: 185px;
+    min-width: 185px;
+    background-color: #FFFAF3;
+    padding-top: 5px;
+}
+
+.barra-botoes > a {
+    height: 47px;
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    color: var(--cor-texto);
+    font-size: 14px;
+    gap: 18px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.barra-botoes > a:hover {
+    color: var(--cor-principal);
+    background-color: #F8E6DC;
+}
+
+.barra-botoes > a img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+/* FRASE LATERAL */
+
+.frase-lateral {
+    width: 147px;
+    min-height: 107px;
+    margin: 48px auto 0;
+    padding: 12px;
+    background-color: #FAEBDD;
+    border-radius: 12px;
+}
+
+.folhinha {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.frase-lateral p {
+    color: #D68A65;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+/* DESENHO LATERAL */
+
+.desenho-lateral {
+    display: block;
+    width: 155px;
+    margin: 70px auto 20px;
+}
+
+/* CONTEUDO */
+
+.conteudo {
+    flex: 1;
+    min-width: 0;
+    padding: 40px 30px 40px 110px;
+    background-color: var(--cor-fundo);
+}
+
+/* TITULO DA PAGINA */
+
+.titulo-pagina {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-left: 130px;
+    margin-bottom: 14px;
+}
+
+.logo-card {
+    width: 80px;
+    height: 80px;
+}
+
+.titulo-pagina h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.titulo-pagina p {
+    font-size: 15px;
+}
+
+/* CARD */
+
+section {
+    width: 620px;
+    max-width: 100%;
+    height: 560px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 38px 42px;
+    margin-left:130px;
+}
+
+section h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 28px;
+}
+
+/* FORMULARIO */
+
+form {
+    width: 100%;
+}
+
+form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 13px;
+    margin-bottom: 9px;
+}
+
+form label span {
+    color: var(--cor-texto);
+}
+
+form input {
+    width: 100%;
+    height: 43px;
+    padding: 0 12px;
+    border: 1px solid #EEE7E2;
+    border-radius: 8px;
+    font-size: 10px;
+    background-color: white;
+}
+
+form input:focus {
+    border-color: var(--cor-principal);
+}
+
+form input::placeholder {
+    color: #444;
+}
+
+/* BOTOES */
+
+.botoes {
+    display: flex;
+    gap: 24px;
+    margin-top: 35px;
+}
+
+.botao {
+    width: 50%;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-principal);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: #A94127;
+}
+
+/* MENSAGENS FLASK */
+
+.flash-messages {
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #F0F4F8;
+    color: #34495E;
+    border: 1px solid #D5DEE8;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    min-height: 78px;
+    padding: 15px 28px;
+    background-color: #FFFAF3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+}
+
+.logo-footer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.logo-footer img {
+    width: 27px;
+    height: 27px;
+}
+
+.logo-footer h2 {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.logo-footer p {
+    font-size: 6px;
+    font-weight: 700;
+}
+
+.frase {
+    margin-right: auto;
+    margin-left: 35px;
+}
+
+/* TABLET */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .barra-botoes {
+        width: 165px;
+        min-width: 165px;
+    }
+
+    .barra-botoes > a {
+        font-size: 12px;
+        gap: 12px;
+    }
+
+    .conteudo {
+        padding: 35px 20px;
+    }
+
+    .titulo-pagina {
+        margin-left: 0;
+        gap: 15px;
+    }
+
+    .titulo-pagina h1 {
+        font-size: 25px;
+    }
+
+    section {
+        width: 100%;
+        max-width: 520px;
+        min-height: 560px;
+        padding: 35px 28px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    footer {
+        padding: 20px;
+    }
+}
+
+/* CELULAR */
+
+@media (max-width: 1200px) {
+    .conteudo { min-width: 0; padding-left: 28px; padding-right: 28px; }
+    .formulario, section { max-width: 100%; }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+    .barra-botoes { width: 170px; min-width: 170px; }
+    .conteudo { min-width: 0; padding: 24px 16px; }
+    .formulario { width: min(100%, 520px); margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        height: 65px;
+        padding: 0 15px;
+    }
+
+    .logo-header img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .logo-header h2 {
+        font-size: 16px;
+    }
+
+    .logo-header p {
+        font-size: 6px;
+    }
+
+    .voltar {
+        font-size: 12px;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    /* MENU */
+
+    .barra-botoes {
+        width: 100%;
+        min-width: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 12px 5px;
+    }
+
+    .barra-botoes > a {
+        height: auto;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .barra-botoes > a img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .frase-lateral {
+        display: none;
+    }
+
+    .desenho-lateral {
+        display: none;
+    }
+
+    /* CONTEUDO */
+
+    .conteudo {
+        width: 100%;
+        padding: 30px 15px 45px;
+    }
+
+    .titulo-pagina {
+        margin: 0 0 25px;
+        gap: 15px;
+    }
+
+    .logo-card {
+        width: 48px;
+        height: 48px;
+    }
+
+    .titulo-pagina h1 {
+        font-size: 23px;
+    }
+
+    .titulo-pagina p {
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    /* CARD */
+
+    section {
+        width: 100%;
+        min-height: 0;
+        padding: 30px 22px 40px;
+        border-radius: 18px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    .subtitulo {
+        font-size: 11px;
+        line-height: 17px;
+    }
+
+    form label {
+        font-size: 11px;
+    }
+
+    form input {
+        height: 45px;
+        font-size: 11px;
+    }
+
+    .botoes {
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .botao {
+        height: 45px;
+        font-size: 10px;
+    }
+
+    /* FOOTER */
+
+    footer {
+        padding: 25px 15px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .logo-footer img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .frase {
+        margin: 0;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        height: 64px;
+        min-height: 64px;
+        padding: 0 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    header .logo-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    header .logo-header img,
+    header img.logo {
+        width: 38px;
+        height: 38px;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    header .logo-header h1,
+    header .logo-header h2,
+    header .logo-header strong {
+        margin: 0;
+        font-size: 16px;
+        line-height: normal;
+    }
+
+    header .logo-header p,
+    header .logo-header small,
+    header .logo-header .submarca {
+        position: static;
+        display: block;
+        margin: 2px 0 0;
+        font-size: 7px;
+        line-height: normal;
+    }
+
+    header > nav {
+        position: static;
+        margin: 0 0 0 auto;
+    }
+
+    header > nav a,
+    header .voltar {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 900px) {
+    footer {
+        min-height: 0; height: auto; padding: 24px 14px;
+        flex-direction: column; align-items: center; justify-content: center;
+        gap: 10px; text-align: center;
+    }
+    .logo-footer {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 10px;
+    }
+    .logo-footer img {
+        flex-shrink: 0;
+        width: 38px;
+        height: 38px;
+        margin: 0;
+        object-fit: contain;
+    }
+    footer .frase {
+        width: 100%;
+        margin: 4px 0 0;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    footer .copyright {
+        margin: 0;
+        color: #c55232;
+        font-size: 14px;
+    }
+}

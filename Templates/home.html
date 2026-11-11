@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PreçoCerto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <img src="{{ url_for('static', filename='img/icone_menu.png') }}" alt="Menu" class="barra-menu">
+
+        <img src="{{ url_for('static', filename='img/icone_logo.png') }}" alt="Logo" class="logo">
+
+        <div class="nome-logo">
+            <h1>Preço<span>Certo</span></h1>
+            <p>PRECIFICAÇÃO AFETIVA</p>
+        </div>
+
+        <nav>
+            <a href="{{ url_for('logout') }}">Sair</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- MENU LATERAL -->
+        <div class="barra-botoes">
+
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/icone_casa.png') }}" alt="Início">
+                Início
+            </a>
+
+            <a href="{{ url_for('pagina_insumos') }}">
+                <img src="{{ url_for('static', filename='img/icone_caixa.png') }}" alt="Insumos">
+                Insumos
+            </a>
+
+            <a href="{{ url_for('pagina_produtos') }}">
+                <img src="{{ url_for('static', filename='img/icone_tocapng.png') }}" alt="Produtos">
+                Produtos
+            </a>
+
+            <a href="{{ url_for('perfil') }}">
+                <img src="{{ url_for('static', filename='img/icone_engrenagem.png') }}" alt="Configurações">
+                Configurações
+            </a>
+
+            <div class="frase-lateral">
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" alt="Folhinha" class="folhinha">
+                <p>Boas escolhas hoje, melhores resultados amanhã!</p>
+            </div>
+
+            <img src="{{ url_for('static', filename='img/toca.png') }}" alt="Decoração">
+
+        </div>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="conteudo">
+
+            <div class="ola">
+
+                <div class="texto-ola">
+                    <h2>Olá, {{ session['usuario_nome'] }}!</h2>
+                    <p>Aqui está o resumo do seu negócio</p>
+                </div>
+
+                <div class="adicionar">
+
+                    <a href="{{ url_for('adicionar_insumo') }}" class="adicionar-insumo">
+                        <span class="mais">+</span>
+                        Adicionar Insumo
+                    </a>
+
+                    <a href="{{ url_for('adicionar_produto') }}" class="adicionar-produto">
+                        <span class="mais">+</span>
+                        Adicionar Produto
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- MENSAGENS -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <p class="flash {{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <div class="area-cards-tabelas">
+
+                <!-- CARDS -->
+                <div class="cards">
+
+                    <div class="card">
+
+                        <div class="carddois">
+                            <img src="{{ url_for('static', filename='img/icone-home1.png') }}" alt="Valor">
+
+                            <p class="info">
+                                Valor total gasto<br>
+                                com insumos
+                            </p>
+                        </div>
+
+                        <p class="num">
+                            R$ {{ "%.2f"|format(total)|replace('.', ',') }}
+                        </p>
+
+                    </div>
+
+                    <div class="card">
+
+                        <div class="carddois">
+                            <img src="{{ url_for('static', filename='img/icone-home2.png') }}" alt="Insumos">
+
+                            <p class="info">Total de insumos</p>
+                        </div>
+
+                        <p class="num">{{ total_insumo }}</p>
+
+                    </div>
+
+                    <div class="card">
+
+                        <div class="carddois">
+                            <img src="{{ url_for('static', filename='img/icone-home2.png') }}" alt="Produtos">
+
+                            <p class="info">Total de produtos</p>
+                        </div>
+
+                        <p class="num">{{ total_produto }}</p>
+
+                    </div>
+
+                </div>
+
+                <!-- TABELAS -->
+                <div class="tabelas">
+
+                    <!-- INSUMOS RECENTES -->
+                    <div class="tabela-insumosRecentes">
+
+                        <div class="nome-tabela">
+                            <img src="{{ url_for('static', filename='img/icone-home2.png') }}" alt="Insumos">
+                            <h3>Insumos recentes</h3>
+                        </div>
+
+                        {% if insumos %}
+
+                            <div class="tabela-responsiva">
+
+                                <table class="insumosRecentes">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Unidade</th>
+                                            <th>Custo unitário</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        {% for insumo in insumos %}
+                                        <tr>
+
+                                            <td>{{ insumo[1] }}</td>
+
+                                            <td>{{ insumo[2] }}</td>
+
+                                            <td>
+                                                R$ {{ "%.2f"|format(insumo[3])|replace('.', ',') }}
+                                            </td>
+
+                                            <td>
+                                                <div class="acoes">
+
+                                                    <a class="botao-editar"
+                                                       href="{{ url_for('editar_insumo', id=insumo[0]) }}">
+                                                        Editar
+                                                    </a>
+
+                                                    <form action="{{ url_for('deletar_insumo_home', id=insumo[0]) }}" method="POST">
+                                                        <button class="botao-deletar" type="submit">
+                                                            Deletar
+                                                        </button>
+                                                    </form>
+
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        {% else %}
+                            <p class="sem-dados">Nenhum insumo cadastrado.</p>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- PRODUTOS RECENTES -->
+                    <div class="tabela-produtosRecentes">
+
+                        <div class="nome-tabela">
+                            <img src="{{ url_for('static', filename='img/icone-home2.png') }}" alt="Produtos">
+                            <h3>Produtos recentes</h3>
+                        </div>
+
+                        {% if produtos %}
+
+                            <div class="tabela-responsiva">
+
+                                <table class="produtosRecentes">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Custo total</th>
+                                            <th>Preço de venda</th>
+                                            <th>Margem</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        {% for produto in produtos %}
+                                        <tr>
+
+                                            <td>{{ produto[1] }}</td>
+
+                                            <td>
+                                                R$ {{ "%.2f"|format(produto[3])|replace('.', ',') }}
+                                            </td>
+
+                                            <td>
+                                                R$ {{ "%.2f"|format(produto[5])|replace('.', ',') }}
+                                            </td>
+
+                                            <td>{{ produto[2] }}%</td>
+
+                                            <td>
+                                                <div class="acoes">
+
+                                                    <a class="botao-editar"
+                                                       href="{{ url_for('editar_produto', id_produto=produto[0]) }}">
+                                                        Editar
+                                                    </a>
+
+                                                    <form action="{{ url_for('deletar_produto_home', id=produto[0]) }}" method="POST">
+                                                        <button class="botao-deletar" type="submit">
+                                                            Deletar
+                                                        </button>
+                                                    </form>
+
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        {% else %}
+                            <p class="sem-dados">Nenhum produto cadastrado.</p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <div class="logo-footer">
+
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" alt="Logo">
+
+            <div>
+                <h2>Preço<span>Certo</span></h2>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+
+            <span class="frase">
+                Precificação afetiva para negócios reais.
+            </span>
+
+        </div>
+
+        <span>© 2026 PreçoCerto</span>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Insumo | PreçoCerto</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_insumo_produto.css') }}">
+</head>
+
+<body class="pagina-editar-insumos-produto">
+    <header>
+        <img src="{{ url_for('static', filename='img/icone_logo.png') }}">
+        <h1>Preço<span>Certo</span></h1>
+        <p>PRECIFICAÇÃO AFETIVA</p>
+
+        <nav>
+            <a href="{{ url_for('lista_insumos_produto', id_produto=produto[0]) }}">
+                Voltar
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="barra-botoes">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/icone_casa.png') }}">
+                Início
+            </a>
+
+            <a href="{{ url_for('pagina_insumos') }}">
+                <img src="{{ url_for('static', filename='img/icone_caixa.png') }}">
+                Insumos
+            </a>
+
+            <a href="{{ url_for('pagina_produtos') }}">
+                <img src="{{ url_for('static', filename='img/icone_tocapng.png') }}">
+                Produtos
+            </a>
+
+            <a href="{{ url_for('perfil') }}">
+                <img src="{{ url_for('static', filename='img/icone_engrenagem.png') }}">
+                Configurações
+            </a>
+
+            <div>
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" class="folhinha">
+                <p>Boas escolhas hoje, melhores resultados amanhã!</p>
+            </div>
+
+            <img class="desenho-lateral" src="{{ url_for('static', filename='img/toca.png') }}">
+        </div>
+
+        <div class="conteudo">
+            <div class="parte-TituloePesquisa">
+                <div class="titulo">
+                    <img src="{{ url_for('static', filename='img/icone_logo.png') }}">
+
+                    <div>
+                        <h1>Editar Insumo</h1>
+                        <p>Altere os dados do insumo utilizado em {{ produto[1] }}</p>
+                    </div>
+                </div>
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <section>
+                <table class="tabela-editar-insumo-produto">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Unidade</th>
+                            <th>Quantidade</th>
+                            <th class="acoes">Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="celula-nome">
+                                {{ insumo[1] }}
+                            </td>
+
+                            <td class="celula-unidade">
+                                {% if insumo[3] == 1 %}
+                                    Quilograma
+                                {% elif insumo[3] == 2 %}
+                                    Grama
+                                {% elif insumo[3] == 3 %}
+                                    Litro
+                                {% elif insumo[3] == 4 %}
+                                    Mililitro
+                                {% elif insumo[3] == 5 %}
+                                    Unidade
+                                {% endif %}
+                            </td>
+
+                            <td class="celula-quantidade">
+                                <form id="form-editar" action="{{ url_for('editar_insumos_produto', id_produto=produto[0], id_insumos=insumo[0]) }}" method="POST">
+                                    <input type="number" name="quantidade" value="{{ insumo[2] }}"  step="0.01" required>
+
+                                    <select name="unidade">
+                                        <option value="1">Quilograma</option>
+                                        <option value="2">Grama</option>
+                                        <option value="3">Litro</option>
+                                        <option value="4">Mililitro</option>
+                                        <option value="5">unidade</option>
+                                    </select>
+                                </form>
+                            </td>
+
+                            <td class="acoes">
+                                <button
+                                    type="submit"
+                                    form="form-editar"
+                                    class="botao"
+                                >
+                                    Salvar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="logo-footer">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}">
+
+            <div>
+                <h2>Preço<span>Certo</span></h2>
+                <p>PRECIFICAÇÃO AFETIVA</p>
+            </div>
+
+            <span class="frase">
+                Precificação afetiva para negócios reais.
+            </span>
+        </div>
+
+        <span>© 2026 PreçoCerto</span>
+    </footer>
+</body>
+
+</html>

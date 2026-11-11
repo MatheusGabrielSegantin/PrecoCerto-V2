@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insumos | PreçoCerto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listas.css') }}">
+</head>
+<body>
+    <header class="topo">
+
+        <div class="logo-header">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" alt="">
+            <div><h2>Preço<span>Certo</span></h2><p>PRECIFICAÇÃO AFETIVA</p></div>
+        </div>
+        <a class="voltar" href="{{ url_for('home') }}">Voltar</a>
+    </header>
+
+    <main class="layout">
+        <div class="barra-botoes">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/icone_casa.png') }}" alt="">Início</a>
+            <a href="{{ url_for('pagina_insumos') }}"><img src="{{ url_for('static', filename='img/icone_caixa.png') }}" alt="">Insumos</a>
+            <a class="selecionado" href="{{ url_for('pagina_produtos') }}"><img src="{{ url_for('static', filename='img/icone_tocapng.png') }}" alt="">Produtos</a>
+            <a href="{{ url_for('perfil') }}"><img src="{{ url_for('static', filename='img/icone_engrenagem.png') }}" alt="">Configurações</a>
+            <div class="frase-lateral">
+                <img src="{{ url_for('static', filename='img/folhinhapng.png') }}" alt="">
+                <p>Boas escolhas hoje, melhores resultados amanhã!</p>
+            </div>
+            <img class="desenho-lateral" src="{{ url_for('static', filename='img/toca.png') }}" alt="">
+        </div>
+
+        <div class="conteudo">
+            <div class="cabecalho-pagina cabecalho-produto">
+                <img class="imagem-produto" src="{{ url_for('static', filename=imagem) }}">
+                <div class="informacoes-produto">
+                    <h1>{{ produto[1] }}</h1>
+                </div>
+                <a class="botao-principal" href="{{ url_for('pesquisa_insumos') }}">+ Adicionar insumo</a>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="mensagens">
+                        {% for category, message in messages %}
+                            <p class="mensagem {{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <section class="cartao cartao-produto">
+                <h2 class="titulo-insumos">Lista de Insumos Utilizados</h2>
+                {% if insumos %}
+                <div class="tabela-responsiva">
+                    <table class="tabela-produto tabela-insumos-produto">
+                        <thead>
+                            <tr>
+                                <th>Nome do insumo</th>
+                                <th>Quantidade</th>
+                                <th>Unidade</th>
+                                <th>Custo</th>
+                                <th class="acoes">Ações</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for insumo in insumos %}
+                            <tr>
+                                <td class="celula-nome">{{ insumo[1] }}</td>
+                                <td class="celula-quantidade">{{ insumo[5]}}</td>
+                                <td class="celula-unidade">{{ insumo[2] }}</td>
+                                <td class="celula-custo">R$ {{ "%.2f"|format(insumo[3]) }}</td>
+                                <td class="acoes">
+                               <a class="botao-editar" href="{{ url_for('editar_insumos_produto',id_produto=produto[0],id_insumos=insumo[0]) }}">Editar</a>
+                                <form action="{{ url_for('deletar_insumos_produto', id=insumo[0], id_produto=produto[0]) }}" method="POST">
+                                    <button class="botao-deletar" type="submit">Deletar</button>
+                                </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="vazio">Este produto ainda não possui insumos cadastrados</p>
+                {% endif %}
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="logo-footer">
+            <img src="{{ url_for('static', filename='img/chapeu.png') }}" alt="">
+            <div><h2>Preço<span>Certo</span></h2><p>PRECIFICAÇÃO AFETIVA</p></div>
+        </div>
+        <p class="frase-footer">Precificação afetiva para negócios reais.</p>
+        <p class="copyright">© 2026 PreçoCerto</p>
+    </footer>
+</body>
+</html>

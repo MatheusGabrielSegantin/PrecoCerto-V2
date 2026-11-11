@@ -1,0 +1,908 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+margin: 0;
+    color: #20242a;
+    background: #fdf7ed;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.topo {
+    width: 100%;
+    height: 68px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fffaf3;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-header img {
+    width: 42px;
+    height: 42px;
+}
+
+.logo-header h2,
+.logo-footer h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo-header span,
+.logo-footer span {
+    color: #c55232;
+}
+
+.logo-header p,
+.logo-footer p {
+    margin: 2px 0 0;
+    font-size: 8px;
+}
+
+.voltar {
+    font-size: 14px;
+}
+
+.layout {
+    min-height: calc(100vh - 168px);
+    display: flex;
+}
+
+.barra-botoes {
+    width: 220px;
+    min-width: 220px;
+    padding: 12px 10px;
+    background: #fffaf3;
+}
+
+.barra-botoes > a {
+    height: 48px;
+    margin: 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+
+.barra-botoes > a img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.barra-botoes > a:hover,
+.barra-botoes > .selecionado {
+    color: #a94127;
+    background: #f8e6dc;
+}
+
+.frase-lateral {
+    margin: 56px 10px 0;
+    padding: 12px;
+    border-radius: 12px;
+    background: #eddfd0;
+}
+
+.frase-lateral img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.frase-lateral p {
+    margin: 6px 0 0;
+    color: #d09475;
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.desenho-lateral {
+    width: 155px;
+    margin: 52px 15px 0;
+}
+
+.conteudo {
+    flex: 1;
+    min-width: 0;
+    padding: 48px 5%;
+}
+
+.cabecalho-produto {
+    max-width: 1050px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.conteudo .cabecalho-pagina {
+    max-width: 1050px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cabecalho-pagina .botao-principal {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+.cabecalho-pagina h1 {
+    margin-bottom: 6px;
+    font-size: 30px;
+}
+
+.cabecalho-pagina p {
+    margin-bottom: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.botao-principal {
+    padding: 12px 18px;
+    border-radius: 7px;
+    color: white;
+    background: #c55232;
+    font-size: 14px;
+
+}
+
+.botao-principal:hover {
+    background: #a94127;
+}
+.botao-pdf{
+    padding: 8px 15px;
+    border-radius: 7px;
+    color: white;
+    background: #de6d4e;
+    font-size: 14px;
+}
+
+.botao-pdf:hover {
+    background: #d67c63;
+}
+
+.botao-insumo{
+    padding: 8px 15px;
+    border-radius: 7px;
+    color: white;
+    background: #de6d4e;
+    font-size: 14px;
+    margin-left:700px;
+}
+.botao-insumo:hover {
+    background: #d67c63;
+}
+.pdf{
+    display:flex;
+    gap:10px;
+    margin-left:500px;
+
+}
+
+.cartao {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 24px;
+    background: white;
+    border-radius: 5px;
+}
+
+.cartao h2 {
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+
+.contador {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 5px 10px;
+    border-radius: 18px;
+    color: #9d452d;
+    background: #f8e0d6;
+    font-size: 12px;
+}
+
+.cartao-produto .tabela-responsiva {
+}
+
+table {
+    width: 100%;
+    font-size: 13px;
+}
+
+th {
+    padding: 14px 12px;
+    color: #bc674b;
+    background: #fbf5ed;
+    font-size: 11px;
+    text-align: left;
+}
+
+td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #f0ebe5;
+}
+
+
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.acoes form {
+    margin: 0;
+}
+
+.botao-editar,
+.botao-deletar {
+    display: inline-block;
+    min-width: 68px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 4px;
+    color: #7d321f;
+    background: #f7d9cf;
+    font-size: 11px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.botao-editar {
+    background: #f2a184;
+}
+
+.botao-editar:hover,
+.botao-deletar:hover {
+    background: #edbdae;
+}
+
+.margem {
+    padding: 5px 9px;
+    border-radius: 14px;
+    color: #16813b;
+    background: #d9f4df;
+    font-size: 11px;
+}
+
+.lucro {
+    color: #16813b;
+    font-weight: bold;
+}
+
+.vazio {
+    padding: 28px 12px;
+    color: #777;
+    text-align: center;
+}
+
+.mensagens {
+    max-width: 1050px;
+    margin: 0 auto 16px;
+}
+
+.mensagem {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 6px;
+    background: #f8e6dc;
+}
+
+footer {
+    min-height: 100px;
+    padding: 18px 40px 18px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #fdf7ed;
+    font-size: 12px;
+}
+
+.logo-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-footer img {
+    width: 34px;
+    height: 34px;
+}
+
+.frase-footer {
+    margin: 0 auto 0 20px;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .barra-botoes {
+        width: 180px;
+        min-width: 180px;
+    }
+
+    .barra-botoes > a {
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .barra-botoes > a img {
+        width: 23px;
+        height: 23px;
+    }
+
+    .conteudo {
+        min-width: 0;
+        padding: 32px 20px;
+    }
+
+    .cartao {
+        padding: 20px 16px;
+    }
+
+    .tabela-responsiva {
+    }
+
+    table {
+        min-width: 620px;
+    }
+
+    footer {
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .topo {
+        padding: 0 12px;
+    }
+
+    .layout {
+        display: block;
+    }
+
+    .barra-botoes {
+        width: 100%;
+        min-width: 0;
+        padding: 8px;
+        display: flex;
+        gap: 4px;
+    }
+
+    .barra-botoes > a {
+        height: 42px;
+        padding: 8px;
+        min-width: max-content;
+        margin: 0;
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .barra-botoes > a img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .frase-lateral,
+    .desenho-lateral {
+        display: none;
+    }
+
+    .conteudo {
+        padding: 22px 14px;
+    }
+
+    .cabecalho-produto {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cartao {
+        padding: 18px 14px;
+    }
+
+    .tabela-responsiva {
+    }
+
+    table,
+    tbody {
+        display: block;
+        width: 100%;
+    }
+
+    table {
+        min-width: 0;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        display: block;
+        margin-bottom: 12px;
+        padding: 4px 10px;
+        border: 1px solid #f0ebe5;
+        border-radius: 10px;
+        background: white;
+    }
+
+    tbody td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 4px;
+        border-bottom: 1px solid #f0ebe5;
+        text-align: right;
+    }
+tbody td.acoes {
+        border-bottom: 0;
+    }
+
+    tbody td.acoes {
+        display: block;
+        text-align: left;
+    }
+.acoes {
+        display: block;
+    }
+
+    .acoes form {
+        display: inline-block;
+    }
+
+    footer {
+        padding: 18px;
+        flex-wrap: wrap;
+    }
+
+    .frase-footer {
+        margin: 0;
+    }
+}
+
+/* Layouts responsivos para as páginas de listas */
+@media (max-width: 1200px) {
+    .conteudo {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .cartao {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+    .barra-botoes {
+        width: 170px;
+        min-width: 170px;
+    }
+
+    .conteudo {
+        padding: 28px 18px;
+    }
+
+    .cabecalho-produto,
+    .conteudo .cabecalho-pagina {
+        gap: 12px;
+    }
+
+    .imagem-produto {
+        width: 96px;
+        height: 96px;
+        flex-basis: 96px;
+    }
+
+    .cartao {
+        padding: 18px 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .tabela-insumos,
+    .tabela-produtos,
+    .tabela-insumos-produto,
+    .tabela-historico {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        border-spacing: 0;
+    }
+
+    .tabela-insumos thead,
+    .tabela-produtos thead,
+    .tabela-insumos-produto thead,
+    .tabela-historico thead {
+        display: none;
+    }
+
+    .tabela-insumos tbody,
+    .tabela-produtos tbody,
+    .tabela-insumos-produto tbody,
+    .tabela-historico tbody {
+        display: grid;
+        gap: 12px;
+    }
+
+    .tabela-insumos tbody tr,
+    .tabela-produtos tbody tr,
+    .tabela-insumos-produto tbody tr,
+    .tabela-historico tbody tr {
+        display: block;
+        margin: 0;
+        padding: 8px 12px;
+        border: 1px solid #eee7e2;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgb(32 36 42 / 5%);
+    }
+
+    .tabela-insumos tbody td,
+    .tabela-produtos tbody td,
+    .tabela-insumos-produto tbody td,
+    .tabela-historico tbody td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 2px;
+        border-bottom: 1px solid #f0ebe5;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+
+    .tabela-insumos tbody td::before,
+    .tabela-produtos tbody td::before,
+    .tabela-insumos-produto tbody td::before,
+    .tabela-historico tbody td::before {
+        width: 42%; flex-shrink: 0;
+        color: #8b6e60;
+        font-size: 11px;
+        font-weight: 700;
+        text-align: left;
+    }
+
+    .tabela-insumos .celula-nome::before { content: "Nome do insumo"; }
+    .tabela-insumos .celula-unidade::before { content: "Unidade"; }
+    .tabela-insumos .celula-custo::before { content: "Custo unitário"; }
+    .tabela-insumos .celula-estoque::before { content: "Estoque"; }
+    .tabela-insumos .acoes::before { content: "Ações"; }
+
+    .tabela-produtos .celula-nome::before { content: "Produto"; }
+    .tabela-produtos .celula-custo::before { content: "Custo total"; }
+    .tabela-produtos .celula-preco::before { content: "Preço de venda"; }
+    .tabela-produtos .celula-margem::before { content: "Margem"; }
+    .tabela-produtos .celula-lucro::before { content: "Lucro por unidade"; }
+    .tabela-produtos .acoes::before { content: "Ações"; }
+
+    .tabela-insumos-produto .celula-nome::before { content: "Insumo"; }
+    .tabela-insumos-produto .celula-quantidade::before { content: "Quantidade"; }
+    .tabela-insumos-produto .celula-unidade::before { content: "Unidade"; }
+    .tabela-insumos-produto .celula-custo::before { content: "Custo"; }
+    .tabela-insumos-produto .acoes::before { content: "Ações"; }
+
+    .tabela-historico .celula-custo-anterior::before { content: "Custo anterior"; }
+    .tabela-historico .celula-custo-novo::before { content: "Custo novo"; }
+    .tabela-historico .celula-data::before { content: "Data da alteração"; }
+
+    .tabela-insumos .acoes,
+    .tabela-produtos .acoes,
+    .tabela-insumos-produto .acoes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+        border-bottom: 0;
+    }
+
+    .tabela-historico .celula-data {
+        border-bottom: 0;
+    }
+
+    .acoes {
+        gap: 8px;
+    }
+
+    .cabecalho-produto .botao-principal,
+    .cabecalho-pagina .botao-principal {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    header,
+    .topo {
+        height: 64px;
+        min-height: 64px;
+        padding: 0 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    header .logo-header,
+    .topo .logo-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    header .logo-header img,
+    .topo .logo-header img,
+    header img.logo {
+        width: 38px;
+        height: 38px;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    header .logo-header h1,
+    header .logo-header h2,
+    header .logo-header strong,
+    .topo .logo-header h1,
+    .topo .logo-header h2,
+    .topo .logo-header strong {
+        margin: 0;
+        font-size: 16px;
+        line-height: normal;
+    }
+
+    header .logo-header p,
+    header .logo-header small,
+    header .logo-header .submarca,
+    .topo .logo-header p,
+    .topo .logo-header small {
+        position: static;
+        display: block;
+        margin: 2px 0 0;
+        font-size: 7px;
+        line-height: normal;
+    }
+
+    header > nav {
+        position: static;
+        margin: 0 0 0 auto;
+    }
+
+    header > nav a,
+    header .voltar,
+    .topo .voltar {
+        font-size: 12px;
+    }
+}
+.botao-historico {
+    background-color: #C55232;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.botao-historico:hover {
+    background-color: #A94329;
+}
+
+/* Detalhe do produto e insumos usados */
+.cabecalho-pagina {
+    min-height: 150px;
+    margin-bottom: 28px;
+}
+
+.imagem-produto {
+    width: 126px;
+    height: 126px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    object-fit: cover;
+    background: #f3e5d8;
+}
+
+.informacoes-produto {
+    flex: 1;
+}
+
+.informacoes-produto h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.informacoes-produto p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.cartao-produto {
+    padding: 22px;
+}
+
+.titulo-insumos {
+    margin: 0 0 14px;
+    font-size: 22px;
+}
+
+.tabela-responsiva {
+    border: 1px solid #898989;
+    border-radius: 14px;
+}
+
+.tabela-produto {
+    font-size: 14px;
+}
+
+.tabela-produto th {
+    padding: 14px 18px;
+    color: #20242a;
+    background: #fdf7ed;
+    font-size: 14px;
+    text-align: center;
+}
+
+.tabela-produto td {
+    padding: 15px 18px;
+    border: 0;
+    background: #fffaf3;
+    text-align: center;
+}
+
+.tabela-produto .acoes {
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .cabecalho-pagina {
+        min-height: 0;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .imagem-produto {
+        width: 88px;
+        height: 88px;
+        flex-basis: 88px;
+        border-radius: 14px;
+    }
+
+    .informacoes-produto {
+        min-width: 0;
+    }
+
+    .informacoes-produto h1 {
+        font-size: 21px;
+        overflow-wrap: anywhere;
+    }
+
+    .cabecalho-produto .botao-principal {
+        margin-left: auto;
+    }
+
+    .cartao-produto .tabela-responsiva {
+        border: 0;
+        border-radius: 0;
+    }
+
+    .tabela-produto,
+    .tabela-produto tbody {
+        display: block;
+        min-width: 0;
+    }
+
+    .tabela-produto tbody tr {
+        border: 1px solid #f0ebe5;
+    }
+
+    .tabela-produto tbody td {
+        background: #fffaf3;
+    }
+
+    .tabela-produto tbody td.acoes {
+        display: block;
+    }
+
+}
+
+/* Cabeçalhos e cartões das listas em telas menores */
+@media (max-width: 900px) and (min-width: 601px) {
+    .conteudo .cabecalho-pagina {
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 22px;
+    }
+
+    .conteudo .cabecalho-pagina h1 {
+        font-size: 26px;
+    }
+
+    .conteudo .cabecalho-pagina .botao-principal {
+        margin-left: auto;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .conteudo .cabecalho-pagina {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .conteudo .cabecalho-pagina h1 {
+        font-size: 24px;
+    }
+
+    .conteudo .cabecalho-pagina .botao-principal {
+        width: fit-content;
+        margin-left: 0;
+    }
+
+    .tabela-insumos tbody td,
+    .tabela-produtos tbody td {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    footer {
+        min-height: 0; height: auto; padding: 24px 14px;
+        flex-direction: column; align-items: center; justify-content: center;
+        gap: 10px; text-align: center;
+    }
+    .logo-footer {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 10px;
+    }
+    .logo-footer img {
+        flex-shrink: 0;
+        width: 38px;
+        height: 38px;
+        margin: 0;
+        object-fit: contain;
+    }
+    .logo-footer .frase,
+    .logo-footer p {
+        width: 100%;
+        flex-shrink: 0;
+        margin: 4px 0 0;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .frase-footer { width: 100%; margin: 4px 0 0; text-align: center; font-size: 14px; line-height: 1.4; }
+    footer span,
+    footer .copyright { margin: 0; color: #c55232; font-size: 14px; }
+}
